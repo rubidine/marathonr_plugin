@@ -1,0 +1,17 @@
+Marathonr
+=========
+
+Integrates your rails project with the MarathonR background runner gem.
+
+
+Example
+=======
+
+WorkRequest.create!(:worker => 'background_worker1', :key => 'U-niQueKey')
+
+In lib you'll find some files.  One can be included in ApplicationController to
+get some handy shortcuts.  One can be subclassed for your workers.  Check thre
+rake tasks, too -- you'll need to migrate from it.
+
+
+Copyright (c) 2008 Todd Willey <todd@rubidine.com>, released under the MIT license
