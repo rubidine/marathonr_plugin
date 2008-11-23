@@ -4,7 +4,6 @@ module RecurringWorker
   end
 
   def perform_with_recurring_worker data
-    puts "\n\n\n\nPERFORM WITH RECURRING"
     begin
       perform_without_recurring_worker(data)
     rescue Exception => ex
@@ -12,6 +11,11 @@ module RecurringWorker
       @request.success = false
       @request.error = true
       @request.status_message = "Exception: #{ex.message}"
+      if $DEBUG
+        puts "----- EXCEPTION DURING PROCESSING"
+        puts ex.message
+        puts ex.backtrace.join("\n")
+      end
     ensure
       reschedule
       @request.save
